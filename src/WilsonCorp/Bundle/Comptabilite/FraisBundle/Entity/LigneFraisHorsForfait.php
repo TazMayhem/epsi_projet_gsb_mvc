@@ -144,4 +144,67 @@ class LigneFraisHorsForfait
     {
         return $this->libelle;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->visiteur = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set ficheFrais
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $ficheFrais
+     * @return LigneFraisHorsForfait
+     */
+    public function setFicheFrais(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $ficheFrais)
+    {
+        $this->ficheFrais = $ficheFrais;
+
+        return $this;
+    }
+
+    /**
+     * Get ficheFrais
+     *
+     * @return \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais 
+     */
+    public function getFicheFrais()
+    {
+        return $this->ficheFrais;
+    }
+
+    /**
+     * Add visiteur
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\Visiteur $visiteur
+     * @return LigneFraisHorsForfait
+     */
+    public function addVisiteur(\WilsonCorpComptabiliteFraisBundle\Entity\Visiteur $visiteur)
+    {
+        $this->visiteur[] = $visiteur;
+
+        return $this;
+    }
+
+    /**
+     * Remove visiteur
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\Visiteur $visiteur
+     */
+    public function removeVisiteur(\WilsonCorpComptabiliteFraisBundle\Entity\Visiteur $visiteur)
+    {
+        $this->visiteur->removeElement($visiteur);
+    }
+
+    /**
+     * Get visiteur
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVisiteur()
+    {
+        return $this->visiteur;
+    }
 }

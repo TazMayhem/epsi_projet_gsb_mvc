@@ -79,4 +79,37 @@ class Etat
     {
         $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    /**
+     * Add fichesFrais
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     * @return Etat
+     */
+    public function addFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    {
+        $this->fichesFrais[] = $fichesFrais;
+
+        return $this;
+    }
+
+    /**
+     * Remove fichesFrais
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     */
+    public function removeFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    {
+        $this->fichesFrais->removeElement($fichesFrais);
+    }
+
+    /**
+     * Get fichesFrais
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFichesFrais()
+    {
+        return $this->fichesFrais;
+    }
 }

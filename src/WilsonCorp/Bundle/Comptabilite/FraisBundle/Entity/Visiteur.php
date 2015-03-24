@@ -39,7 +39,7 @@ class Visiteur
      *
      * @ORM\ManyToOne(
      *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait",
-     *      inverseBy="visiteur"
+     *      inversedBy="visiteur"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
@@ -310,5 +310,94 @@ class Visiteur
     public function __construct()
     {
         $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add fichesFrais
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     * @return Visiteur
+     */
+    public function addFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    {
+        $this->fichesFrais[] = $fichesFrais;
+
+        return $this;
+    }
+
+    /**
+     * Remove fichesFrais
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     */
+    public function removeFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    {
+        $this->fichesFrais->removeElement($fichesFrais);
+    }
+
+    /**
+     * Get fichesFrais
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFichesFrais()
+    {
+        return $this->fichesFrais;
+    }
+
+    /**
+     * Add lignesFraisForfait
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
+     * @return Visiteur
+     */
+    public function addLignesFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    {
+        $this->lignesFraisForfait[] = $lignesFraisForfait;
+
+        return $this;
+    }
+
+    /**
+     * Remove lignesFraisForfait
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
+     */
+    public function removeLignesFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    {
+        $this->lignesFraisForfait->removeElement($lignesFraisForfait);
+    }
+
+    /**
+     * Get lignesFraisForfait
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLignesFraisForfait()
+    {
+        return $this->lignesFraisForfait;
+    }
+
+    /**
+     * Set lignesFraisHorsForfait
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
+     * @return Visiteur
+     */
+    public function setLignesFraisHorsForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
+    {
+        $this->lignesFraisHorsForfait = $lignesFraisHorsForfait;
+
+        return $this;
+    }
+
+    /**
+     * Get lignesFraisHorsForfait
+     *
+     * @return \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait 
+     */
+    public function getLignesFraisHorsForfait()
+    {
+        return $this->lignesFraisHorsForfait;
     }
 }

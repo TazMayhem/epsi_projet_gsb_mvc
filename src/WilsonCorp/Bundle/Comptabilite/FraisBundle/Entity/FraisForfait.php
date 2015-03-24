@@ -109,4 +109,27 @@ class FraisForfait
     {
         $this->lignesFraisForfait = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    /**
+     * Set lignesFraisForfait
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
+     * @return FraisForfait
+     */
+    public function setLignesFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    {
+        $this->lignesFraisForfait = $lignesFraisForfait;
+
+        return $this;
+    }
+
+    /**
+     * Get lignesFraisForfait
+     *
+     * @return \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait 
+     */
+    public function getLignesFraisForfait()
+    {
+        return $this->lignesFraisForfait;
+    }
 }

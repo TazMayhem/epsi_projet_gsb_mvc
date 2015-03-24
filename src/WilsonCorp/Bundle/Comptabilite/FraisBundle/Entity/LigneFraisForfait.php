@@ -154,4 +154,90 @@ class LigneFraisForfait
 
         return $this;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fraisForfait = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set ficheFrais
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $ficheFrais
+     * @return LigneFraisForfait
+     */
+    public function setFicheFrais(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $ficheFrais)
+    {
+        $this->ficheFrais = $ficheFrais;
+
+        return $this;
+    }
+
+    /**
+     * Get ficheFrais
+     *
+     * @return \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais 
+     */
+    public function getFicheFrais()
+    {
+        return $this->ficheFrais;
+    }
+
+    /**
+     * Add fraisForfait
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FraisForfait $fraisForfait
+     * @return LigneFraisForfait
+     */
+    public function addFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\FraisForfait $fraisForfait)
+    {
+        $this->fraisForfait[] = $fraisForfait;
+
+        return $this;
+    }
+
+    /**
+     * Remove fraisForfait
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FraisForfait $fraisForfait
+     */
+    public function removeFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\FraisForfait $fraisForfait)
+    {
+        $this->fraisForfait->removeElement($fraisForfait);
+    }
+
+    /**
+     * Get fraisForfait
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFraisForfait()
+    {
+        return $this->fraisForfait;
+    }
+
+    /**
+     * Set visiteur
+     *
+     * @param \WilsonCorpComptabiliteFraisBundle\Entity\Visiteur $visiteur
+     * @return LigneFraisForfait
+     */
+    public function setVisiteur(\WilsonCorpComptabiliteFraisBundle\Entity\Visiteur $visiteur)
+    {
+        $this->visiteur = $visiteur;
+
+        return $this;
+    }
+
+    /**
+     * Get visiteur
+     *
+     * @return \WilsonCorpComptabiliteFraisBundle\Entity\Visiteur 
+     */
+    public function getVisiteur()
+    {
+        return $this->visiteur;
+    }
 }
