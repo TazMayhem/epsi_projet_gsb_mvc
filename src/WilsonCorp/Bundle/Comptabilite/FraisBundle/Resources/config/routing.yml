@@ -1,0 +1,3 @@
+wilson_corp_comptabilite_frais_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: WilsonCorpComptabiliteFraisBundle:Default:index }

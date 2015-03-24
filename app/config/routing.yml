@@ -1,0 +1,7 @@
+wilson_corp_comptabilite_frais:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
