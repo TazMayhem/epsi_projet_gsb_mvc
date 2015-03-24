@@ -17,8 +17,7 @@ class LigneFraisForfait
      *
      * @ORM\ManyToOne(
      *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
-     *      inversedBy="lignesFraisForfait",
-     *      cascade={"persist"}
+     *      inversedBy="lignesFraisForfait"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
@@ -27,13 +26,24 @@ class LigneFraisForfait
     /**
      * @var FraisForfait
      *
-     * @ORM\ManyToOne(
+     * @ORM\OneToMany(
      *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FraisForfait",
+     *      mappedBy="lignesFraisForfait",
+     *      cascade={"persist"}
+     * )
+     */
+    private $fraisForfait;
+
+    /**
+     * @var Visiteur
+     *
+     * @ORM\ManyToOne(
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\Visiteur",
      *      inversedBy="lignesFraisForfait"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
-    private $fraisForfait;
+    private $visiteur;
 
     /**
      * @var integer

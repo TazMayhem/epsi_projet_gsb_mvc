@@ -17,12 +17,33 @@ class Visiteur
      *
      * @ORM\OneToMany(
      *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
-     *      mappedBy="author",
+     *      mappedBy="visiteur",
      *      cascade={"persist"}
      * )
      */
     private $fichesFrais;
 
+    /**
+     * @var arrayCollection
+     *
+     * @ORM\OneToMany(
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait",
+     *      mappedBy="visiteur",
+     *      cascade={"persist"}
+     * )
+     */
+    private $lignesFraisForfait;
+
+    /**
+     * @var LigneFraisHorsForfait
+     *
+     * @ORM\ManyToOne(
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait",
+     *      inverseBy="visiteur"
+     * )
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $lignesFraisHorsForfait;
 
     /**
      * @var integer

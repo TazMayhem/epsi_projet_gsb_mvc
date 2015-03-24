@@ -17,12 +17,11 @@ class FicheFrais
      *
      * @ORM\ManyToOne(
      *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\Visiteur",
-     *      inversedBy="fichesfrais",
-     *      cascade={"persist"}
+     *      inversedBy="fichesFrais"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
-    private $author;
+    private $visiteur;
 
     /**
      * @var ArrayCollection

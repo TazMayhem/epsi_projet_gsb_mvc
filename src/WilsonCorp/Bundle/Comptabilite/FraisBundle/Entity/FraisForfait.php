@@ -15,11 +15,11 @@ class FraisForfait
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(
+     * @ORM\ManyToOne(
      *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait",
-     *      mappedBy="fraisForfait",
-     *      cascade={"persist"}
+     *      inversedBy="fraisForfait"
      * )
+     * @ORM\JoinColumn(nullable=false)
      */
     private $lignesFraisForfait;
 
