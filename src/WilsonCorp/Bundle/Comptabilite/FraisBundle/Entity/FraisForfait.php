@@ -16,7 +16,7 @@ class FraisForfait
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="LigneFraisForfait",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait",
      *      mappedBy="fraisForfait",
      *      cascade={"persist"}
      * )
@@ -108,38 +108,5 @@ class FraisForfait
     public function __construct()
     {
         $this->lignesFraisForfait = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add lignesFraisForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
-     * @return FraisForfait
-     */
-    public function addLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
-    {
-        $this->lignesFraisForfait[] = $lignesFraisForfait;
-
-        return $this;
-    }
-
-    /**
-     * Remove lignesFraisForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
-     */
-    public function removeLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
-    {
-        $this->lignesFraisForfait->removeElement($lignesFraisForfait);
-    }
-
-    /**
-     * Get lignesFraisForfait
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLignesFraisForfait()
-    {
-        return $this->lignesFraisForfait;
     }
 }

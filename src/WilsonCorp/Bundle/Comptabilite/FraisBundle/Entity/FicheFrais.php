@@ -16,7 +16,7 @@ class FicheFrais
      * @var Visiteur
      *
      * @ORM\ManyToOne(
-     *      targetEntity="Visiteur",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\Visiteur",
      *      inversedBy="fichesfrais",
      *      cascade={"persist"}
      * )
@@ -28,7 +28,7 @@ class FicheFrais
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="LignesFraisHorsForfait",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LignesFraisHorsForfait",
      *      mappedBy="ficheFrais",
      *      cascade={"persist"}
      * )
@@ -39,7 +39,7 @@ class FicheFrais
      * @var Etat
      *
      * @ORM\ManyToOne(
-     *      targetEntity="Etat",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\Etat",
      *      inversedBy="fichesFrais"
      * )
      * @ORM\JoinColumn(nullable=false)
@@ -50,7 +50,7 @@ class FicheFrais
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="LigneFraisForfait",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait",
      *      mappedBy="ficheFrais",
      *      cascade={"persist"}
      * )
@@ -203,117 +203,5 @@ class FicheFrais
         $this->mois = $mois;
 
         return $this;
-    }
-
-    /**
-     * Set author
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $author
-     * @return FicheFrais
-     */
-    public function setAuthor(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $author)
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur 
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * Add lignesFraisHorsForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait
-     * @return FicheFrais
-     */
-    public function addLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait)
-    {
-        $this->lignesFraisHorsForfait[] = $lignesFraisHorsForfait;
-
-        return $this;
-    }
-
-    /**
-     * Remove lignesFraisHorsForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait
-     */
-    public function removeLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait)
-    {
-        $this->lignesFraisHorsForfait->removeElement($lignesFraisHorsForfait);
-    }
-
-    /**
-     * Get lignesFraisHorsForfait
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLignesFraisHorsForfait()
-    {
-        return $this->lignesFraisHorsForfait;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Etat $etat
-     * @return FicheFrais
-     */
-    public function setEtat(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Etat $etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Etat 
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * Add lignesFraisForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
-     * @return FicheFrais
-     */
-    public function addLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
-    {
-        $this->lignesFraisForfait[] = $lignesFraisForfait;
-
-        return $this;
-    }
-
-    /**
-     * Remove lignesFraisForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
-     */
-    public function removeLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
-    {
-        $this->lignesFraisForfait->removeElement($lignesFraisForfait);
-    }
-
-    /**
-     * Get lignesFraisForfait
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getLignesFraisForfait()
-    {
-        return $this->lignesFraisForfait;
     }
 }

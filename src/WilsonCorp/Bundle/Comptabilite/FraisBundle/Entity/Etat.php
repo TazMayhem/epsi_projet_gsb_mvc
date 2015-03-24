@@ -16,7 +16,7 @@ class Etat
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="FicheFrais",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
      *      mappedBy="etat",
      *      cascade={"persist"}
      * )
@@ -78,38 +78,5 @@ class Etat
     public function __construct()
     {
         $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add fichesFrais
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais
-     * @return Etat
-     */
-    public function addFichesFrai(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais)
-    {
-        $this->fichesFrais[] = $fichesFrais;
-
-        return $this;
-    }
-
-    /**
-     * Remove fichesFrais
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais
-     */
-    public function removeFichesFrai(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais)
-    {
-        $this->fichesFrais->removeElement($fichesFrais);
-    }
-
-    /**
-     * Get fichesFrais
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getFichesFrais()
-    {
-        return $this->fichesFrais;
     }
 }

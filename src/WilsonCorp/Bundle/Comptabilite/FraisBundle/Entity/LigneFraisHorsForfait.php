@@ -17,10 +17,11 @@ class LigneFraisHorsForfait
      * @var FicheFrais
      *
      * @ORM\ManyToOne(
-     *      targetEntity="FicheFrais",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
      *      inversedBy="lignesFraisHorsForfait",
      *      cascade={"persist"}
      * )
+     * @ORM\JoinColumn(nullable=false)
      */
     private $ficheFrais;
 
@@ -132,28 +133,5 @@ class LigneFraisHorsForfait
     public function getLibelle()
     {
         return $this->libelle;
-    }
-
-    /**
-     * Set ficheFrais
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $ficheFrais
-     * @return LigneFraisHorsForfait
-     */
-    public function setFicheFrais(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $ficheFrais = null)
-    {
-        $this->ficheFrais = $ficheFrais;
-
-        return $this;
-    }
-
-    /**
-     * Get ficheFrais
-     *
-     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais 
-     */
-    public function getFicheFrais()
-    {
-        return $this->ficheFrais;
     }
 }

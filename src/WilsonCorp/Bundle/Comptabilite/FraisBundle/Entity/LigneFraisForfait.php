@@ -16,7 +16,7 @@ class LigneFraisForfait
      * @var FicheFrais
      *
      * @ORM\ManyToOne(
-     *      targetEntity="FicheFrais",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
      *      inversedBy="lignesFraisForfait",
      *      cascade={"persist"}
      * )
@@ -28,7 +28,7 @@ class LigneFraisForfait
      * @var FraisForfait
      *
      * @ORM\ManyToOne(
-     *      targetEntity="FraisForfait",
+     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FraisForfait",
      *      inversedBy="lignesFraisForfait"
      * )
      * @ORM\JoinColumn(nullable=false)
@@ -143,51 +143,5 @@ class LigneFraisForfait
         $this->idFraisForfait = $idFraisForfait;
 
         return $this;
-    }
-
-    /**
-     * Set ficheFrais
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $ficheFrais
-     * @return LigneFraisForfait
-     */
-    public function setFicheFrais(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $ficheFrais)
-    {
-        $this->ficheFrais = $ficheFrais;
-
-        return $this;
-    }
-
-    /**
-     * Get ficheFrais
-     *
-     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais 
-     */
-    public function getFicheFrais()
-    {
-        return $this->ficheFrais;
-    }
-
-    /**
-     * Set fraisForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait
-     * @return LigneFraisForfait
-     */
-    public function setFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait)
-    {
-        $this->fraisForfait = $fraisForfait;
-
-        return $this;
-    }
-
-    /**
-     * Get fraisForfait
-     *
-     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait 
-     */
-    public function getFraisForfait()
-    {
-        return $this->fraisForfait;
     }
 }
