@@ -13,10 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Visiteur
 {
     /**
-     * @var arrayCollection
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais",
      *      mappedBy="visiteur",
      *      cascade={"persist"}
      * )
@@ -24,10 +24,10 @@ class Visiteur
     private $fichesFrais;
 
     /**
-     * @var arrayCollection
+     * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait",
      *      mappedBy="visiteur",
      *      cascade={"persist"}
      * )
@@ -38,7 +38,7 @@ class Visiteur
      * @var LigneFraisHorsForfait
      *
      * @ORM\ManyToOne(
-     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait",
      *      inversedBy="visiteur"
      * )
      * @ORM\JoinColumn(nullable=false)
@@ -315,10 +315,10 @@ class Visiteur
     /**
      * Add fichesFrais
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais
      * @return Visiteur
      */
-    public function addFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    public function addFichesFrai(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais)
     {
         $this->fichesFrais[] = $fichesFrais;
 
@@ -328,9 +328,9 @@ class Visiteur
     /**
      * Remove fichesFrais
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais
      */
-    public function removeFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    public function removeFichesFrai(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais)
     {
         $this->fichesFrais->removeElement($fichesFrais);
     }
@@ -348,10 +348,10 @@ class Visiteur
     /**
      * Add lignesFraisForfait
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
      * @return Visiteur
      */
-    public function addLignesFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    public function addLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
     {
         $this->lignesFraisForfait[] = $lignesFraisForfait;
 
@@ -361,9 +361,9 @@ class Visiteur
     /**
      * Remove lignesFraisForfait
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
      */
-    public function removeLignesFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    public function removeLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
     {
         $this->lignesFraisForfait->removeElement($lignesFraisForfait);
     }
@@ -381,10 +381,10 @@ class Visiteur
     /**
      * Set lignesFraisHorsForfait
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
      * @return Visiteur
      */
-    public function setLignesFraisHorsForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
+    public function setLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
     {
         $this->lignesFraisHorsForfait = $lignesFraisHorsForfait;
 
@@ -394,7 +394,7 @@ class Visiteur
     /**
      * Get lignesFraisHorsForfait
      *
-     * @return \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisHorsForfait 
+     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait 
      */
     public function getLignesFraisHorsForfait()
     {

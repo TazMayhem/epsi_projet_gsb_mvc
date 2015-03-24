@@ -16,7 +16,7 @@ class Etat
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais",
      *      mappedBy="etat",
      *      cascade={"persist"}
      * )
@@ -83,10 +83,10 @@ class Etat
     /**
      * Add fichesFrais
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais
      * @return Etat
      */
-    public function addFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    public function addFichesFrai(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais)
     {
         $this->fichesFrais[] = $fichesFrais;
 
@@ -96,9 +96,9 @@ class Etat
     /**
      * Remove fichesFrais
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais
      */
-    public function removeFichesFrai(\WilsonCorpComptabiliteFraisBundle\Entity\FicheFrais $fichesFrais)
+    public function removeFichesFrai(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais $fichesFrais)
     {
         $this->fichesFrais->removeElement($fichesFrais);
     }

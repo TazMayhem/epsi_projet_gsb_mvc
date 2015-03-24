@@ -16,7 +16,7 @@ class FraisForfait
      * @var ArrayCollection
      *
      * @ORM\ManyToOne(
-     *      targetEntity="WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait",
      *      inversedBy="fraisForfait"
      * )
      * @ORM\JoinColumn(nullable=false)
@@ -113,10 +113,10 @@ class FraisForfait
     /**
      * Set lignesFraisForfait
      *
-     * @param \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
      * @return FraisForfait
      */
-    public function setLignesFraisForfait(\WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    public function setLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
     {
         $this->lignesFraisForfait = $lignesFraisForfait;
 
@@ -126,7 +126,7 @@ class FraisForfait
     /**
      * Get lignesFraisForfait
      *
-     * @return \WilsonCorpComptabiliteFraisBundle\Entity\LigneFraisForfait 
+     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait 
      */
     public function getLignesFraisForfait()
     {
