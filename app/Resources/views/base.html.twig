@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta http-equic="Content-type" content="text/html; charset=utf-8" />
+        <title>GSB - {% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/wilsoncorpcomptabilitefrais/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/wilsoncorpcomptabilitefrais/css/bootstrap-theme.css') }}" rel="stylesheet" />
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="container">
+            <header class="well">
+                {% block header %}
+                {% endblock %}
+            </header>
+            <nav class="navbar navbar-default">
+                {% block menu %}
+                {% endblock %}
+            </nav>
+            <div id="row">
+                {% block body %}
+                {% endblock %}
+            </div>
+            <footer class="well">
+                {% block footer %}
+                    &copy; Copyright 2015
+                {% endblock %}
+            </footer>
+        </div>
+    {% block javascripts %}
+        <script src="{{ asset('bundles/wilsoncorpcomptabilitefrais/js/jquery-2.1.3.min.js') }}"></script>
+        <script src="{{ asset('bundles/wilsoncorpcomptabilitefrais/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
     </body>
 </html>

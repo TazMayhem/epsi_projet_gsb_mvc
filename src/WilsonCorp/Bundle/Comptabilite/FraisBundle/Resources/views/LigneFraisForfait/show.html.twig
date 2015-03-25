@@ -1,0 +1,40 @@
+{% extends 'WilsonCorpComptabiliteFraisBundle::base.html.twig' %}
+
+{% block body -%}
+    <h1>LigneFraisForfait</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idvisiteur</th>
+                <td>{{ entity.idVisiteur }}</td>
+            </tr>
+            <tr>
+                <th>Mois</th>
+                <td>{{ entity.mois }}</td>
+            </tr>
+            <tr>
+                <th>Idfraisforfait</th>
+                <td>{{ entity.idFraisForfait }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ entity.quantite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('lignefraisforfait') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('lignefraisforfait_edit', { 'id': entity.idVisiteur }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title 'Gestion comptabilité' %}
+
+    {% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/wilsoncorpcomptabilitefrais/css/Application/indexDefault.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+    {% block header %}
+        <h1>GSB -
+    {% endblock %}
+
+    {% block menu %}
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Accueil</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li> <a href="#">Saise</a></li>
+                    <li> <a href="#">Consultation</a></li>
+                    <li> <a href="#">Validation</a></li>
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        {{ parent() }}
+    {% endblock %}
