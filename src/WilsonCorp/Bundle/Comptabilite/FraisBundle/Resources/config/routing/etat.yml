@@ -1,0 +1,30 @@
+etat:
+    path:     /
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:index" }
+
+etat_show:
+    path:     /{id}/show
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:show" }
+
+etat_new:
+    path:     /new
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:new" }
+
+etat_create:
+    path:     /create
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:create" }
+    methods:  POST
+
+etat_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:edit" }
+
+etat_update:
+    path:     /{id}/update
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:update" }
+    methods:  [POST, PUT]
+
+etat_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:Etat:delete" }
+    methods:  [POST, DELETE]

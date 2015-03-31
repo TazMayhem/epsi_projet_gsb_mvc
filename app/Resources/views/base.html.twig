@@ -10,21 +10,21 @@
     </head>
     <body>
         <div class="container">
-            <header class="well">
-                {% block header %}
-                {% endblock %}
-            </header>
-            <nav class="navbar navbar-default">
+            <nav>
                 {% block menu %}
                 {% endblock %}
             </nav>
+            <header>
+                {% block header %}
+                {% endblock %}
+            </header>
             <div id="row">
                 {% block body %}
                 {% endblock %}
             </div>
-            <footer class="well">
+            <footer>
                 {% block footer %}
-                    &copy; Copyright 2015
+                    &copy; Copyright WilsonCorp 2015
                 {% endblock %}
             </footer>
         </div>

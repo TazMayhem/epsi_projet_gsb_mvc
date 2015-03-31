@@ -1,9 +1,136 @@
 /* Homepage's stylesheet */
 
+* {
+    color: #ffffff;
+}
+
+/*Adding alien custom font*/
+@font-face {
+    font-family: geosans;
+    src: url("../../fonts/GeosansLight.ttf");
+}
+
+body {
+    background-color: #131426;
+}
+
 header > h1 {
     text-align: center;
+    font-family: geosans;
 }
 
 footer {
     text-align: center;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+}
+
+
+/* Vertical NavBar */
+/* Définition du bandeau de gauche */
+#bandeau {
+    /* Affichage en block */
+    display: block;
+    /* Position fixe sur le coté gauche */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    /* Couleur de fond */
+    background: #3078bf;
+    /* Définition des tailles */
+    width: 2.5rem;
+    height: 100%;
+    /* Cache le contenu qui dépasse (Utilisé pour cacher les textes quand la souris n'est pas sur le bandeau) */
+    overflow: hidden;
+    /* Animation de l'agrandissement du menu */
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -o-transition-property: width;
+    transition-property: width;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-timing-function: ease-in;
+    -moz-transition-timing-function: ease-in;
+    -o-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+}
+
+/* Définition du block qui contient les icones */
+#bandeau #menu {
+    /* Centrage vertical */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /* Définition de la hauteur du block: 240px de hauteur (40px par icone) nécéssaire pour le centrage vertical */
+    height: 35rem;
+}
+
+/* Définition des icons */
+#bandeau #menu .menu-item {
+    /* Fixer a gauche dans le menu */
+    float: left;
+    /* Définition de la taille d'un menu 200px de large, 40px de haut */
+    width: 12.5rem;
+    height: 5rem;
+    /* Définition de la couleur du texte */
+    color: #fafafa;
+    /* Suppression des effets sur le texte dû aux liens */
+    text-decoration: none;
+    /* Alignement vertical du texte */
+    vertical-align: middle;
+    line-height: 5rem;
+    /* Animation lors du survol de la souris */
+    -webkit-transition: all 0.25s ease-in;
+    -moz-transition: all 0.25s ease-in;
+    -o-transition: all 0.25s ease-in;
+    transition: all 0.25s ease-in;
+}
+
+/* Définition de l'image des icones */
+#bandeau #menu .menu-item span {
+    /* Positionnement a gauche */
+    float: left;
+    /* Forcer le centrage dans le bandeau */
+    margin: 0.25rem;
+    margin-top: 1.7rem;
+    /* Marge pour écarter le texte de l'image */
+    margin-right: 1.188rem;
+    margin-left: 0.5rem;
+    /* Définition de l'animation */
+    -webkit-transition: all 0.25s ease-in;
+    -moz-transition: all 0.25s ease-in;
+    -o-transition: all 0.25s ease-in;
+    transition: all 0.25s ease-in;
+}
+
+/* Annule la coloration du texte du bandeau si la page est déjà visitée */
+#bandeau #menu .menu-item:visited {
+    color: #fafafa;
+}
+
+/* Change la couleur de fond des élements quand il sont survolés */
+#bandeau #menu .menu-item:hover {
+    background: #131426;
+}
+
+/* Tourne l'image de 45° quand les éléments sont survolés */
+#bandeau #menu .menu-item:hover span {
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    -o-transform: translateX(5px);
+    transform: translateX(5px);
+}
+
+/* Change la taille du bandeau quand il est survolé */
+#bandeau:hover {
+    width: 12.5rem;
 }

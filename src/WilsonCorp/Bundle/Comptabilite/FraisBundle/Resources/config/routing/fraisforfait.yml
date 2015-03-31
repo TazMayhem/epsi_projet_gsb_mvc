@@ -1,0 +1,30 @@
+fraisforfait:
+    path:     /
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:index" }
+
+fraisforfait_show:
+    path:     /{id}/show
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:show" }
+
+fraisforfait_new:
+    path:     /new
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:new" }
+
+fraisforfait_create:
+    path:     /create
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:create" }
+    methods:  POST
+
+fraisforfait_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:edit" }
+
+fraisforfait_update:
+    path:     /{id}/update
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:update" }
+    methods:  [POST, PUT]
+
+fraisforfait_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:FraisForfait:delete" }
+    methods:  [POST, DELETE]

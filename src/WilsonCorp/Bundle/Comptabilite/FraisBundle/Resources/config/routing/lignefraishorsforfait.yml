@@ -1,0 +1,30 @@
+lignefraishorsforfait:
+    path:     /
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:index" }
+
+lignefraishorsforfait_show:
+    path:     /{id}/show
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:show" }
+
+lignefraishorsforfait_new:
+    path:     /new
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:new" }
+
+lignefraishorsforfait_create:
+    path:     /create
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:create" }
+    methods:  POST
+
+lignefraishorsforfait_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:edit" }
+
+lignefraishorsforfait_update:
+    path:     /{id}/update
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:update" }
+    methods:  [POST, PUT]
+
+lignefraishorsforfait_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "WilsonCorpComptabiliteFraisBundle:LigneFraisHorsForfait:delete" }
+    methods:  [POST, DELETE]
