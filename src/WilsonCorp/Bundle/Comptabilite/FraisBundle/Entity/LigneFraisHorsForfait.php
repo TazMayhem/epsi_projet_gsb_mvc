@@ -27,11 +27,11 @@ class LigneFraisHorsForfait
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(
+     * @ORM\ManyToOne(
      *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur",
-     *      mappedBy="lignesFraisHorsForfait",
-     *      cascade={"persist"}
+     *      inversedBy="lignesFraisHorsForfait",
      * )
+     * @ORM\JoinColumn(nullable=false)
      */
     private $visiteur;
 
@@ -206,5 +206,18 @@ class LigneFraisHorsForfait
     public function getVisiteur()
     {
         return $this->visiteur;
+    }
+
+    /**
+     * Set visiteur
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $visiteur
+     * @return LigneFraisHorsForfait
+     */
+    public function setVisiteur(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $visiteur)
+    {
+        $this->visiteur = $visiteur;
+
+        return $this;
     }
 }

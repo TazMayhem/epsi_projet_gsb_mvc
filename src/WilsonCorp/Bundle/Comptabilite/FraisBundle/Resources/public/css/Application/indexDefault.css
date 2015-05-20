@@ -1,9 +1,5 @@
 /* Homepage's stylesheet */
 
-* {
-    color: #ffffff;
-}
-
 /*Adding alien custom font*/
 @font-face {
     font-family: geosans;
@@ -14,9 +10,55 @@ body {
     background-color: #131426;
 }
 
+h1 {
+    color: #ffffff;
+}
+
+#wilsoncorp_bundle_comptabilite_fraisbundle_fichefrais > div > label {
+    color: #424242;
+}
+
+thead {
+    color: #ffffff;
+}
+
+header {
+    margin-bottom: 10rem;
+}
+
 header > h1 {
     text-align: center;
     font-family: geosans;
+    margin-top: 30px;
+}
+
+header > .info-user-band {
+    background-color: #3078bf;
+    color: #ffffff;
+    font-family: geosans;
+    font-size: 1.7rem;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 7%;
+}
+
+#menuAccueil {
+    height: 60rem;
+}
+
+#menuAccueil > a {
+    position: relative;
+    top: 40%;
+    font-size: 2.5rem;
+    line-height: 10rem;
+    display: block;
+}
+
+#menuAccueil > a > span {
+    font-size: 2.5rem;
+    margin-left: 5%;
 }
 
 footer {
@@ -50,10 +92,10 @@ footer {
     -moz-transition-property: width;
     -o-transition-property: width;
     transition-property: width;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    transition-duration: 0.5s;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    transition-duration: 0.25s;
     -webkit-transition-timing-function: ease-in;
     -moz-transition-timing-function: ease-in;
     -o-transition-timing-function: ease-in;

@@ -1,15 +1,56 @@
 {% extends 'WilsonCorpComptabiliteFraisBundle::base.html.twig' %}
 
+{% block header %}
+    {{ parent() }}
+    Fiche de frais {{ "now"|date("m/Y") }} </h1>
+{% endblock %}
+
 {% block body -%}
-    <h1>FicheFrais creation</h1>
+    <div class="row panel panel-primary commentsList">
+        <div class="panel-heading">
+            Elements forfaitisés
+        </div>
+        <div class="panel-body">
+            <form>
+                {% if ficheFrais is null %}
+                    {% for frais in fraisForfait %}
+                        <label>{{ frais.libelle }}</label>
+                        <input type="text" id={{ frais.id }}
+                        name={{ frais.libelle }}
+                        size="10" maxlength="5"
+                        title="Saisissez une quantité"
+                        value="" />
+                        </br>
+                    {% endfor %}
+                {% else %}
+                    {% for frais in fraisForfait %}
+                        <label>{{ frais.libelle }}</label>
+                        <input type="text" id={{ frais.id }}
+                        name={{ frais.libelle }}
+                        size="10" maxlength="5"
+                        title="Saisissez une quantité"
+                        value="Toto" />
+                        </br>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit" class="btn-default btn" title="Valider les modifications apportées">Valider</button>
+            </form>
+        </div>
+    </div>
 
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('fichefrais') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row panel panel-primary commentsList">
+        <div class="panel-heading">
+            Ajouter un élément hors-forfait
+        </div>
+        <div class="panel-body">
+            <form name="elementHorsForfait" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2">Toto</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" required="required">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}

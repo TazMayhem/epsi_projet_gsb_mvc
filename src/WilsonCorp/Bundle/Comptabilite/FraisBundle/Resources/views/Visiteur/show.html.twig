@@ -1,60 +1,40 @@
 {% extends 'WilsonCorpComptabiliteFraisBundle::base.html.twig' %}
 
+{% block header %}
+    {{ parent() }}
+    Utilisateurs</h1>
+{% endblock %}
+
 {% block body -%}
-    <h1>Visiteur</h1>
+    <div class="row" id="userTitle">
+        <h2 class="col-md-10">{{ entity.nom }} - {{ entity.postes.first.name }} </h2>
+        <div class="record_actions col-md-2">
+            <span class="col-md-6">
+                <a class ="btn btn-info" href="{{ path('visiteur_edit', { 'id': entity.id }) }}">Edit</a>
+            </span>
+            <span class="col-md-6">
+                {{ form(delete_form) }}
+            </span>
+        </div>
+    </div>
+    {% if 1==4 %}
+        <div class="row alert-info" id="tagList">
+            Cet utilisateur n'est lié à aucune fiche de frais.
+        </div>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entity.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ entity.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ entity.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ entity.ville }}</td>
-            </tr>
-            <tr>
-                <th>Cp</th>
-                <td>{{ entity.cp }}</td>
-            </tr>
-            <tr>
-                <th>Dateembauche</th>
-                <td>{{ entity.dateEmbauche|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Login</th>
-                <td>{{ entity.login }}</td>
-            </tr>
-            <tr>
-                <th>Mdp</th>
-                <td>{{ entity.mdp }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('visiteur') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('visiteur_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            </tbody>
+        </table>
+    {% endif %}
+    <a href="{{ path('visiteur') }}">
+        Retour à la liste des utilisateurs
+    </a>
 {% endblock %}

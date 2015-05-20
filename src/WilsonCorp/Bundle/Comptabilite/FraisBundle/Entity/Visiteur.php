@@ -3,6 +3,7 @@
 namespace WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Visiteur
@@ -10,8 +11,19 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\VisiteurRepository")
  */
-class Visiteur
+class Visiteur implements UserInterface, \Serializable
 {
+    /**
+     * @var Poste
+     *
+     * @ORM\ManyToMany(
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Poste",
+     *      mappedBy="visiteurs"
+     * )
+     */
+    private $postes;
+
+
     /**
      * @var ArrayCollection
      *
@@ -37,11 +49,11 @@ class Visiteur
     /**
      * @var LigneFraisHorsForfait
      *
-     * @ORM\ManyToOne(
+     * @ORM\OneToMany(
      *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait",
-     *      inversedBy="visiteur"
+     *      mappedBy="visiteur",
+     *      cascade={"persist"}
      * )
-     * @ORM\JoinColumn(nullable=false)
      */
     private $lignesFraisHorsForfait;
 
@@ -99,16 +111,41 @@ class Visiteur
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=20)
+     * @ORM\Column(name="username", type="string", length=20)
      */
-    private $login;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mdp", type="string", length=20)
+     * @ORM\Column(name="password", type="string", length=40)
      */
-    private $mdp;
+    private $password;
+
+
+    /**
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
+
+
+    public function eraseCredentials()
+    {
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            ) = unserialize($serialized);
+    }
 
 
     /**
@@ -260,49 +297,49 @@ class Visiteur
     }
 
     /**
-     * Set login
+     * Set username
      *
-     * @param string $login
+     * @param string $username
      * @return Visiteur
      */
-    public function setLogin($login)
+    public function setUsername($username)
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get login
+     * Get username
      *
      * @return string 
      */
-    public function getLogin()
+    public function getUsername()
     {
-        return $this->login;
+        return $this->username;
     }
 
     /**
-     * Set mdp
+     * Set password
      *
-     * @param string $mdp
+     * @param string $password
      * @return Visiteur
      */
-    public function setMdp($mdp)
+    public function setPassword($password)
     {
-        $this->mdp = $mdp;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get mdp
+     * Get password
      *
      * @return string 
      */
-    public function getMdp()
+    public function getPassword()
     {
-        return $this->mdp;
+        return $this->password;
     }
     /**
      * Constructor
@@ -310,6 +347,8 @@ class Visiteur
     public function __construct()
     {
         $this->fichesFrais = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->salt = md5(uniqid(null, true));
+        $this->postes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -399,5 +438,94 @@ class Visiteur
     public function getLignesFraisHorsForfait()
     {
         return $this->lignesFraisHorsForfait;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return Visiteur
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    public function getRoles()
+    {
+        return $this->postes->toArray();
+    }
+
+    /**
+     * Add postes
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Poste $postes
+     * @return Visiteur
+     */
+    public function addPoste(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Poste $postes)
+    {
+        $this->postes[] = $postes;
+
+        return $this;
+    }
+
+    /**
+     * Remove postes
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Poste $postes
+     */
+    public function removePoste(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Poste $postes)
+    {
+        $this->postes->removeElement($postes);
+    }
+
+    /**
+     * Get postes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPostes()
+    {
+        return $this->postes;
+    }
+
+    /**
+     * Add lignesFraisHorsForfait
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
+     * @return Visiteur
+     */
+    public function addLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
+    {
+        $this->lignesFraisHorsForfait[] = $lignesFraisHorsForfait;
+
+        return $this;
+    }
+
+    /**
+     * Remove lignesFraisHorsForfait
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
+     */
+    public function removeLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
+    {
+        $this->lignesFraisHorsForfait->removeElement($lignesFraisHorsForfait);
+    }
+
+    public function __toString()
+    {
+        return $this->username;
     }
 }

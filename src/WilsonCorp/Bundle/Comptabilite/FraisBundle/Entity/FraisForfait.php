@@ -19,16 +19,15 @@ class FraisForfait
      *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait",
      *      inversedBy="fraisForfait"
      * )
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lignesFraisForfait;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="string", length=3)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -42,7 +41,7 @@ class FraisForfait
     /**
      * @var string
      *
-     * @ORM\Column(name="montant", type="decimal")
+     * @ORM\Column(name="montant", type="decimal", scale=2)
      */
     private $montant;
 

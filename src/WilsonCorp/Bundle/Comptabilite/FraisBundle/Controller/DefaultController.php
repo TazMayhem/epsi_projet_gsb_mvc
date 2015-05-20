@@ -8,6 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('WilsonCorpComptabiliteFraisBundle:Default:index.html.twig');
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $userId = '6';
+
+        return $this->render('WilsonCorpComptabiliteFraisBundle:Default:index.html.twig',array(
+            'userId' => $userId
+        ));
     }
 }

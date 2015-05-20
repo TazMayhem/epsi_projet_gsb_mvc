@@ -1,15 +1,18 @@
 {% extends 'WilsonCorpComptabiliteFraisBundle::base.html.twig' %}
-
+{% block header %}
+    {{ parent() }}
+    Utilisateurs</h1>
+{% endblock %}
 {% block body -%}
-    <h1>Visiteur creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('visiteur') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row panel panel-primary commentsList">
+        <div class="panel-heading">
+            Nouvel utilisateur
+        </div>
+        <div class="panel-body">
+            {{ form(form) }}
+        </div>
+    </div>
+    <a href="{{ path('visiteur') }}">
+        Retour à la liste des utilisateurs
+    </a>
 {% endblock %}
