@@ -16,19 +16,18 @@ class FicheFrais
      * @var Visiteur
      *
      * @ORM\ManyToOne(
-     *      targetEntity="Visiteur",
-     *      inversedBy="fichesfrais",
-     *      cascade={"persist"}
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur",
+     *      inversedBy="fichesFrais"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
-    private $author;
+    private $visiteur;
 
     /**
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="LignesFraisHorsForfait",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait",
      *      mappedBy="ficheFrais",
      *      cascade={"persist"}
      * )
@@ -39,7 +38,7 @@ class FicheFrais
      * @var Etat
      *
      * @ORM\ManyToOne(
-     *      targetEntity="Etat",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Etat",
      *      inversedBy="fichesFrais"
      * )
      * @ORM\JoinColumn(nullable=false)
@@ -50,7 +49,7 @@ class FicheFrais
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="LigneFraisForfait",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait",
      *      mappedBy="ficheFrais",
      *      cascade={"persist"}
      * )
@@ -206,35 +205,35 @@ class FicheFrais
     }
 
     /**
-     * Set author
+     * Set visiteur
      *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $author
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $visiteur
      * @return FicheFrais
      */
-    public function setAuthor(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $author)
+    public function setVisiteur(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $visiteur)
     {
-        $this->author = $author;
+        $this->visiteur = $visiteur;
 
         return $this;
     }
 
     /**
-     * Get author
+     * Get visiteur
      *
      * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur 
      */
-    public function getAuthor()
+    public function getVisiteur()
     {
-        return $this->author;
+        return $this->visiteur;
     }
 
     /**
      * Add lignesFraisHorsForfait
      *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
      * @return FicheFrais
      */
-    public function addLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait)
+    public function addLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
     {
         $this->lignesFraisHorsForfait[] = $lignesFraisHorsForfait;
 
@@ -244,9 +243,9 @@ class FicheFrais
     /**
      * Remove lignesFraisHorsForfait
      *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait
      */
-    public function removeLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LignesFraisHorsForfait $lignesFraisHorsForfait)
+    public function removeLignesFraisHorsForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisHorsForfait $lignesFraisHorsForfait)
     {
         $this->lignesFraisHorsForfait->removeElement($lignesFraisHorsForfait);
     }

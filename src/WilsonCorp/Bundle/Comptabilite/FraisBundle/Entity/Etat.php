@@ -16,7 +16,7 @@ class Etat
      * @var ArrayCollection
      *
      * @ORM\OneToMany(
-     *      targetEntity="FicheFrais",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais",
      *      mappedBy="etat",
      *      cascade={"persist"}
      * )
@@ -111,5 +111,10 @@ class Etat
     public function getFichesFrais()
     {
         return $this->fichesFrais;
+    }
+
+    public function __toString()
+    {
+        return $this->libelle;
     }
 }

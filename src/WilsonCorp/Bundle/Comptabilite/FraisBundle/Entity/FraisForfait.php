@@ -15,20 +15,19 @@ class FraisForfait
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(
-     *      targetEntity="LigneFraisForfait",
-     *      mappedBy="fraisForfait",
-     *      cascade={"persist"}
+     * @ORM\ManyToOne(
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait",
+     *      inversedBy="fraisForfait"
      * )
+     * @ORM\JoinColumn(nullable=true)
      */
     private $lignesFraisForfait;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="string", length=3)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -42,7 +41,7 @@ class FraisForfait
     /**
      * @var string
      *
-     * @ORM\Column(name="montant", type="decimal")
+     * @ORM\Column(name="montant", type="decimal", scale=2)
      */
     private $montant;
 
@@ -111,32 +110,22 @@ class FraisForfait
     }
 
     /**
-     * Add lignesFraisForfait
+     * Set lignesFraisForfait
      *
      * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
      * @return FraisForfait
      */
-    public function addLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
+    public function setLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
     {
-        $this->lignesFraisForfait[] = $lignesFraisForfait;
+        $this->lignesFraisForfait = $lignesFraisForfait;
 
         return $this;
     }
 
     /**
-     * Remove lignesFraisForfait
-     *
-     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait
-     */
-    public function removeLignesFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait $lignesFraisForfait)
-    {
-        $this->lignesFraisForfait->removeElement($lignesFraisForfait);
-    }
-
-    /**
      * Get lignesFraisForfait
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\LigneFraisForfait 
      */
     public function getLignesFraisForfait()
     {

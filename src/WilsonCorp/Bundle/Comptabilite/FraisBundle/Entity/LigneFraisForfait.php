@@ -16,9 +16,8 @@ class LigneFraisForfait
      * @var FicheFrais
      *
      * @ORM\ManyToOne(
-     *      targetEntity="FicheFrais",
-     *      inversedBy="lignesFraisForfait",
-     *      cascade={"persist"}
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FicheFrais",
+     *      inversedBy="lignesFraisForfait"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
@@ -27,13 +26,24 @@ class LigneFraisForfait
     /**
      * @var FraisForfait
      *
+     * @ORM\OneToMany(
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait",
+     *      mappedBy="lignesFraisForfait",
+     *      cascade={"persist"}
+     * )
+     */
+    private $fraisForfait;
+
+    /**
+     * @var Visiteur
+     *
      * @ORM\ManyToOne(
-     *      targetEntity="FraisForfait",
+     *      targetEntity="WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur",
      *      inversedBy="lignesFraisForfait"
      * )
      * @ORM\JoinColumn(nullable=false)
      */
-    private $fraisForfait;
+    private $visiteur;
 
     /**
      * @var integer
@@ -144,6 +154,13 @@ class LigneFraisForfait
 
         return $this;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->fraisForfait = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set ficheFrais
@@ -169,25 +186,58 @@ class LigneFraisForfait
     }
 
     /**
-     * Set fraisForfait
+     * Add fraisForfait
      *
      * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait
      * @return LigneFraisForfait
      */
-    public function setFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait)
+    public function addFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait)
     {
-        $this->fraisForfait = $fraisForfait;
+        $this->fraisForfait[] = $fraisForfait;
 
         return $this;
     }
 
     /**
+     * Remove fraisForfait
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait
+     */
+    public function removeFraisForfait(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait $fraisForfait)
+    {
+        $this->fraisForfait->removeElement($fraisForfait);
+    }
+
+    /**
      * Get fraisForfait
      *
-     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\FraisForfait 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getFraisForfait()
     {
         return $this->fraisForfait;
+    }
+
+    /**
+     * Set visiteur
+     *
+     * @param \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $visiteur
+     * @return LigneFraisForfait
+     */
+    public function setVisiteur(\WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur $visiteur)
+    {
+        $this->visiteur = $visiteur;
+
+        return $this;
+    }
+
+    /**
+     * Get visiteur
+     *
+     * @return \WilsonCorp\Bundle\Comptabilite\FraisBundle\Entity\Visiteur 
+     */
+    public function getVisiteur()
+    {
+        return $this->visiteur;
     }
 }

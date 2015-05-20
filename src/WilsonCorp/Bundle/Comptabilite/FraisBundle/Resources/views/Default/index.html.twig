@@ -1,1 +1,17 @@
-Hello {{ name }}!
+{% extends "WilsonCorpComptabiliteFraisBundle::base.html.twig" %}
+
+{% block header %}
+    {{ parent() }}
+    Accueil </h1>
+{% endblock %}
+
+{% block body %}
+    <div class="row" id="menuAccueil">
+        <a class="col-md-5 btn btn-primary" href="{{ path('fichefrais_new') }}">
+            Saisir une fiche de frais
+        </a>
+        <a class="col-md-offset-2 col-md-5 btn btn-primary" href="{{ path('visiteur_show', { 'id': userId }) }}">
+            Mes fiches <span class="badge">18</span>
+        </a>
+    </div>
+{% endblock %}

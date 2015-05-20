@@ -1,3 +1,27 @@
+wilson_corp_comptabilite_frais_lignefraisforfait:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing/lignefraisforfait.yml"
+    prefix:   /lignefraisforfait
+
+wilson_corp_comptabilite_frais_lignefraishorsforfait:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing/lignefraishorsforfait.yml"
+    prefix:   /lignefraishorsforfait
+
+wilson_corp_comptabilite_frais_visiteur:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing/visiteur.yml"
+    prefix:   /visiteur
+
+wilson_corp_comptabilite_frais_fraisforfait:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing/fraisforfait.yml"
+    prefix:   /fraisforfait
+
+wilson_corp_comptabilite_frais_fichefrais:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing/fichefrais.yml"
+    prefix:   /fichefrais
+
+wilson_corp_comptabilite_frais_etat:
+    resource: "@WilsonCorpComptabiliteFraisBundle/Resources/config/routing/etat.yml"
+    prefix:   /etat
+
 wilson_corp_comptabilite_frais_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: WilsonCorpComptabiliteFraisBundle:Default:index }
