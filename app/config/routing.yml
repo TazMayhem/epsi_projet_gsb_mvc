@@ -5,3 +5,13 @@ wilson_corp_comptabilite_frais:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+login:
+    pattern:   /login
+    defaults:  { _controller: WilsonCorpComptabiliteFraisBundle:Security:login }
+
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern:   /logout
