@@ -83,29 +83,42 @@ class FicheFraisController extends Controller
     {
         $entity = new FicheFrais();
         $em = $this->getDoctrine()->getManager();
+        $form   = $this->createCreateForm($entity);
 
         /*TODO:A modifier avec la valeur du mois courrant l'id de l'utilisateur connecté */
         $moisCourrant = 05;
         $visiteurConnecte = 6;
+        $quantite = 2;
 
         //On récupère la liste des frais forfaitisés
         $fraisForfaitQuery=$em->createQuery("SELECT f FROM WilsonCorpComptabiliteFraisBundle:FraisForfait f");
         $fraisForfait=$fraisForfaitQuery->getResult();
 
-        /*TODO:Modifier les requêtes pour gérer l'utilisateur courrant*/
         //On récupère la fiche de frais du mois courrant correspondant à l'utilisateur connecté
-        $ficheFraisQuery=$em->createQuery("SELECT f FROM WilsonCorpComptabiliteFraisBundle:FicheFrais f WHERE f.mois = $moisCourrant");
+        $ficheFraisQuery=$em->createQuery("
+          SELECT f
+          FROM WilsonCorpComptabiliteFraisBundle:FicheFrais f
+          JOIN f.visiteur v WHERE v.id = $visiteurConnecte
+          AND f.mois = $moisCourrant
+        ");
         $ficheFrais=$ficheFraisQuery->getResult();
 
-        //On récupère les lignes de frais forfaitisés du mois courant
-        $lignesFraisForfaitQuery=$em->createQuery("SELECT l FROM WilsonCorpComptabiliteFraisBundle:FicheFrais l WHERE l.mois = $moisCourrant");
+        //On récupère les lignes de frais forfaitisés du mois courant et de l'utilisateur connecté
+        $lignesFraisForfaitQuery=$em->createQuery("
+          SELECT l
+          FROM WilsonCorpComptabiliteFraisBundle:LigneFraisForfait l
+          JOIN l.visiteur v WHERE v.id = $visiteurConnecte
+          AND l.mois = $moisCourrant
+        ");
+        $lignesFraisForfait=$lignesFraisForfaitQuery->getResult();
 
-        $form   = $this->createCreateForm($entity);
-
+        //On retourne la vue avec Twig
         return $this->render('WilsonCorpComptabiliteFraisBundle:FicheFrais:new.html.twig', array(
             'entity' => $entity,
             'fraisForfait' => $fraisForfait,
             'ficheFrais' => $ficheFrais,
+            'lignesFraisForfait' => $lignesFraisForfait,
+            'quantite' => $quantite,
             'form'   => $form->createView(),
         ));
     }

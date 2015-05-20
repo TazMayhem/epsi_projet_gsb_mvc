@@ -23,14 +23,41 @@
                         </br>
                     {% endfor %}
                 {% else %}
-                    {% for frais in fraisForfait %}
-                        <label>{{ frais.libelle }}</label>
-                        <input type="text" id={{ frais.id }}
-                        name={{ frais.libelle }}
-                        size="10" maxlength="5"
-                        title="Saisissez une quantité"
-                        value="Toto" />
-                        </br>
+                    {#TODO: Optimiser l'itération des lignesFraisForfait#}
+                    {% for ligne in lignesFraisForfait %}
+                        {% if ligne.idFraisForfait == "ETP" %}
+                            <label>{{ fraisForfait.0.libelle }}</label>
+                            <input type="text" id={{ fraisForfait.0.id }}
+                            name={{ fraisForfait.0.libelle }}
+                            size="10" maxlength="5"
+                            title="Saisissez une quantité"
+                            value={{ ligne.quantite }} />
+                            </br>
+                        {% elseif ligne.idFraisForfait == "KM"%}
+                            <label>{{ fraisForfait.1.libelle }}</label>
+                            <input type="text" id={{ fraisForfait.1.id }}
+                            name={{ fraisForfait.1.libelle }}
+                            size="10" maxlength="5"
+                            title="Saisissez une quantité"
+                            value={{ ligne.quantite }} />
+                            </br>
+                        {% elseif ligne.idFraisForfait == "NUI"%}
+                            <label>{{ fraisForfait.2.libelle }}</label>
+                            <input type="text" id={{ fraisForfait.2.id }}
+                            name={{ fraisForfait.2.libelle }}
+                            size="10" maxlength="5"
+                            title="Saisissez une quantité"
+                            value={{ ligne.quantite }} />
+                            </br>
+                        {% elseif ligne.idFraisForfait == "REP"%}
+                            <label>{{ fraisForfait.3.libelle }}</label>
+                            <input type="text" id={{ fraisForfait.3.id }}
+                            name={{ fraisForfait.3.libelle }}
+                            size="10" maxlength="5"
+                            title="Saisissez une quantité"
+                            value={{ ligne.quantite }} />
+                            </br>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
                 <button type="submit" class="btn-default btn" title="Valider les modifications apportées">Valider</button>
