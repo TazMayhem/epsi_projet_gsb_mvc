@@ -14,70 +14,59 @@
             <form>
                 {% if ficheFrais is null %}
                     {% for frais in fraisForfait %}
-                        <label>{{ frais.libelle }}</label>
-                        <input type="text" id={{ frais.id }}
+                        <td><label>{{ frais.libelle }}</label></td>
+                        <td><input type="text" id={{ frais.id }}
                         name={{ frais.libelle }}
                         size="10" maxlength="5"
                         title="Saisissez une quantité"
-                        value="" />
-                        </br>
+                        value="" /></td>
                     {% endfor %}
                 {% else %}
-                    {#TODO: Optimiser l'itération des lignesFraisForfait#}
-                    {% for ligne in lignesFraisForfait %}
-                        {% if ligne.idFraisForfait == "ETP" %}
-                            <label>{{ fraisForfait.0.libelle }}</label>
-                            <input type="text" id={{ fraisForfait.0.id }}
-                            name={{ fraisForfait.0.libelle }}
-                            size="10" maxlength="5"
-                            title="Saisissez une quantité"
-                            value={{ ligne.quantite }} />
-                            </br>
-                        {% elseif ligne.idFraisForfait == "KM"%}
-                            <label>{{ fraisForfait.1.libelle }}</label>
-                            <input type="text" id={{ fraisForfait.1.id }}
-                            name={{ fraisForfait.1.libelle }}
-                            size="10" maxlength="5"
-                            title="Saisissez une quantité"
-                            value={{ ligne.quantite }} />
-                            </br>
-                        {% elseif ligne.idFraisForfait == "NUI"%}
-                            <label>{{ fraisForfait.2.libelle }}</label>
-                            <input type="text" id={{ fraisForfait.2.id }}
-                            name={{ fraisForfait.2.libelle }}
-                            size="10" maxlength="5"
-                            title="Saisissez une quantité"
-                            value={{ ligne.quantite }} />
-                            </br>
-                        {% elseif ligne.idFraisForfait == "REP"%}
-                            <label>{{ fraisForfait.3.libelle }}</label>
-                            <input type="text" id={{ fraisForfait.3.id }}
-                            name={{ fraisForfait.3.libelle }}
-                            size="10" maxlength="5"
-                            title="Saisissez une quantité"
-                            value={{ ligne.quantite }} />
-                            </br>
-                        {% endif %}
-                    {% endfor %}
+                    <table class="table table-striped table-hover" id="tabList">
+                        <tbody>
+                            {#TODO: Optimiser l'itération des lignesFraisForfait#}
+                            {% for ligne in lignesFraisForfait %}
+                                <tr>
+                                {% if ligne.idFraisForfait == "ETP" %}
+                                    <td><label>{{ fraisForfait.0.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.0.id }}
+                                    name={{ fraisForfait.0.libelle }}
+                                    size="10" maxlength="5"
+                                    title="Saisissez une quantité"
+                                    value={{ ligne.quantite }} /></td>
+                                {% elseif ligne.idFraisForfait == "KM"%}
+                                    <td><label>{{ fraisForfait.1.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.1.id }}
+                                    name={{ fraisForfait.1.libelle }}
+                                    size="10" maxlength="5"
+                                    title="Saisissez une quantité"
+                                    value={{ ligne.quantite }} /></td>
+                                {% elseif ligne.idFraisForfait == "NUI"%}
+                                    <td><label>{{ fraisForfait.2.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.2.id }}
+                                    name={{ fraisForfait.2.libelle }}
+                                    size="10" maxlength="5"
+                                    title="Saisissez une quantité"
+                                    value={{ ligne.quantite }} /></td>
+                                {% elseif ligne.idFraisForfait == "REP"%}
+                                    <td><label>{{ fraisForfait.3.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.3.id }}
+                                    name={{ fraisForfait.3.libelle }}
+                                    size="10" maxlength="5"
+                                    title="Saisissez une quantité"
+                                    value={{ ligne.quantite }} /></td>
+                                {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 {% endif %}
                 <button type="submit" class="btn-default btn" title="Valider les modifications apportées">Valider</button>
             </form>
         </div>
     </div>
 
-    <div class="row panel panel-primary commentsList">
-        <div class="panel-heading">
-            Ajouter un élément hors-forfait
-        </div>
-        <div class="panel-body">
-            <form name="elementHorsForfait" method="post" class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2">Toto</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" required="required">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    <a class="btn btn-default" href="#">
+        Ajouter un élément hors-forfait
+    </a>
 {% endblock %}

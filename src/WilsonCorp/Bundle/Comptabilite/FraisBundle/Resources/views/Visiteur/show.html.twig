@@ -7,15 +7,7 @@
 
 {% block body -%}
     <div class="row" id="userTitle">
-        <h2 class="col-md-10">{{ entity.nom }} - {{ entity.postes.first.name }} </h2>
-        <div class="record_actions col-md-2">
-            <span class="col-md-6">
-                <a class ="btn btn-info" href="{{ path('visiteur_edit', { 'id': entity.id }) }}">Edit</a>
-            </span>
-            <span class="col-md-6">
-                {{ form(delete_form) }}
-            </span>
-        </div>
+        <h2 class="col-md-10" style="color: #ffffff !important;">{{ entity.nom }}{% if entity.postes.first != ""  %} - {{ entity.postes.first.name }}{% endif %} </h2>
     </div>
     {% if 1==4 %}
         <div class="row alert-info" id="tagList">
@@ -25,12 +17,47 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Date</th>
+                <th>Fiche n°</th>
+                <th>Fiche du mois de</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-
+                {% for fiche in ficheFrais %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        {% if fiche.mois == 01 %}
+                            Janvier
+                        {% elseif fiche.mois == 02 %}
+                            Février
+                        {% elseif fiche.mois == 03 %}
+                            Mars
+                        {% elseif fiche.mois == 04 %}
+                            Avril
+                        {% elseif fiche.mois == 05 %}
+                            Mai
+                        {% elseif fiche.mois == 06 %}
+                            Juin
+                        {% elseif fiche.mois == 07 %}
+                            Juillet
+                        {% elseif fiche.mois == 08 %}
+                            Août
+                        {% elseif fiche.mois == 09 %}
+                            Septembre
+                        {% elseif fiche.mois == 10 %}
+                            Octobre
+                        {% elseif fiche.mois == 11 %}
+                            Novembre
+                        {% elseif fiche.mois == 12 %}
+                            Décembre
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('fichefrais_show', { 'id': fiche.idVisiteur }) }}">Détails</a>
+                    </td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     {% endif %}

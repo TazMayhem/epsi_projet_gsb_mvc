@@ -39,6 +39,8 @@ class VisiteurController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        $entity->setDateEmbauche(new \DateTime('today'));
+
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
@@ -103,6 +105,17 @@ class VisiteurController extends Controller
 
         $entity = $em->getRepository('WilsonCorpComptabiliteFraisBundle:Visiteur')->find($id);
 
+        /*TODO:A modifier avec la valeur du mois courrant l'id de l'utilisateur connecté */
+        $visiteurConnecte = 6;
+
+        //On récupère la fiche de frais du mois courrant correspondant à l'utilisateur connecté
+        $ficheFraisQuery=$em->createQuery("
+          SELECT f
+          FROM WilsonCorpComptabiliteFraisBundle:FicheFrais f
+          JOIN f.visiteur v WHERE v.id = $visiteurConnecte
+        ");
+        $ficheFrais=$ficheFraisQuery->getResult();
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Visiteur entity.');
         }
@@ -111,6 +124,7 @@ class VisiteurController extends Controller
 
         return $this->render('WilsonCorpComptabiliteFraisBundle:Visiteur:show.html.twig', array(
             'entity'      => $entity,
+            'ficheFrais' => $ficheFrais,
             'delete_form' => $deleteForm->createView(),
         ));
     }

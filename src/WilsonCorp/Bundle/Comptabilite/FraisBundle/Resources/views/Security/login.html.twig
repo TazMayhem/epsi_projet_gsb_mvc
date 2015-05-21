@@ -2,7 +2,7 @@
 
 {% block header %}
     {{ parent() }}
-    Accueil </h1>
+    Connexion </h1>
 {% endblock %}
 
 {% block menu %}
@@ -14,14 +14,38 @@
         <div class="alert alert-danger">{{ error.message }}</div>
     {% endif %}
 
-    <form action="{{ path('login_check') }}" method="post">
-        <label for="username">Login :</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+    <div class="row panel panel-primary commentsList center-block" style="width: 30%;">
+        <div class="panel-heading">
+            Veuillez saisir vos identifiants
+        </div>
+        <div class="panel-body">
+            <form action="{{ path('login_check') }}" method="post">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label for="username">Login :</label>
+                            </td>
+                            <td>
+                                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="password">Mot de passe :</label>
+                            </td>
+                            <td>
+                                <input type="password" id="password" name="_password" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn-default btn center-block" title="Valider les modifications apportées">Connexion</button>
+            </form>
+        </div>
+    </div>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
-        <br />
-        <input type="submit" value="Connexion" />
-    </form>
+
+
 
 {% endblock %}

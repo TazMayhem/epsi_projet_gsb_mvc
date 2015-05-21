@@ -1,15 +1,28 @@
 {% extends 'WilsonCorpComptabiliteFraisBundle::base.html.twig' %}
 
+{% block header %}
+    {{ parent() }}
+    Frais forfaitisés {{ "now"|date("m/Y") }} </h1>
+{% endblock %}
+
 {% block body -%}
-    <h1>LigneFraisForfait creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('lignefraisforfait') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <div class="row panel panel-primary commentsList">
+        <div class="panel-heading">
+            Elements forfaitisés
+        </div>
+        <div class="panel-body">
+            <form action={{ path('lignefraisforfait_create') }} method="POST">
+                {% for frais in fraisForfait %}
+                    <label>{{ frais.libelle }}</label>
+                    <input type="text" id={{ frais.id }}
+                    name={{ frais.libelle }}
+                    size="10" maxlength="5"
+                    title="Saisissez une quantité"
+                    value="" />
+                    </br>
+                {% endfor %}
+                <button type="submit" class="btn-default btn" title="Valider les modifications apportées">Valider</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

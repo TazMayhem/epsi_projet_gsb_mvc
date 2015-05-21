@@ -1,44 +1,91 @@
 {% extends 'WilsonCorpComptabiliteFraisBundle::base.html.twig' %}
 
+{% block header %}
+    {{ parent() }}
+    Fiche de frais {{ entity.dateModif|date("m/Y") }} </h1>
+{% endblock %}
+
 {% block body -%}
-    <h1>FicheFrais</h1>
+    <div class="row panel panel-primary commentsList">
+        <div class="panel-heading">
+            Fiche de frais détaillée - {{ entity.dateModif|date('d/m/Y') }}
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped" id="tabList">
+                <thead>
+                    <tr style="color: #343434 !important;">
+                        <th>Visiteur n°</th>
+                        <th>Dernière modification</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ entity.idVisiteur }}</td>
+                        <td>{{ entity.dateModif|date('d/m/Y') }}</td>
+                        <td>
+                            {{ form(delete_form) }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Idvisiteur</th>
-                <td>{{ entity.idVisiteur }}</td>
-            </tr>
-            <tr>
-                <th>Mois</th>
-                <td>{{ entity.mois }}</td>
-            </tr>
-            <tr>
-                <th>Nbjustificatifs</th>
-                <td>{{ entity.nbJustificatifs }}</td>
-            </tr>
-            <tr>
-                <th>Montantvalide</th>
-                <td>{{ entity.montantValide }}</td>
-            </tr>
-            <tr>
-                <th>Datemodif</th>
-                <td>{{ entity.dateModif|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
+            <form>
+                {% if ficheFrais is null %}
+                    {% for frais in fraisForfait %}
+                        <td><label>{{ frais.libelle }}</label></td>
+                        <td><input type="text" id={{ frais.id }}
+                            name={{ frais.libelle }}
+                                   size="10" maxlength="5"
+                                   title="Saisissez une quantité"
+                                   value="" /></td>
+                    {% endfor %}
+                {% else %}
+                    <table class="table table-striped table-hover" id="tabList">
+                        <tbody>
+                        {#TODO: Optimiser l'itération des lignesFraisForfait#}
+                        {% for ligne in lignesFraisForfait %}
+                            <tr>
+                                {% if ligne.idFraisForfait == "ETP" %}
+                                    <td><label>{{ fraisForfait.0.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.0.id }}
+                                        name={{ fraisForfait.0.libelle }}
+                                               size="10" maxlength="5"
+                                               title="Saisissez une quantité"
+                                               value={{ ligne.quantite }} /></td>
+                                {% elseif ligne.idFraisForfait == "KM"%}
+                                    <td><label>{{ fraisForfait.1.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.1.id }}
+                                        name={{ fraisForfait.1.libelle }}
+                                               size="10" maxlength="5"
+                                               title="Saisissez une quantité"
+                                               value={{ ligne.quantite }} /></td>
+                                {% elseif ligne.idFraisForfait == "NUI"%}
+                                    <td><label>{{ fraisForfait.2.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.2.id }}
+                                        name={{ fraisForfait.2.libelle }}
+                                               size="10" maxlength="5"
+                                               title="Saisissez une quantité"
+                                               value={{ ligne.quantite }} /></td>
+                                {% elseif ligne.idFraisForfait == "REP"%}
+                                    <td><label>{{ fraisForfait.3.libelle }}</label></td>
+                                    <td><input type="text" id={{ fraisForfait.3.id }}
+                                        name={{ fraisForfait.3.libelle }}
+                                               size="10" maxlength="5"
+                                               title="Saisissez une quantité"
+                                               value={{ ligne.quantite }} /></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+    <div class="row">
         <a href="{{ path('fichefrais') }}">
-            Back to the list
+            Retour à la liste des fiches frais
         </a>
-    </li>
-    <li>
-        <a href="{{ path('fichefrais_edit', { 'id': entity.idVisiteur }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    </div>
 {% endblock %}

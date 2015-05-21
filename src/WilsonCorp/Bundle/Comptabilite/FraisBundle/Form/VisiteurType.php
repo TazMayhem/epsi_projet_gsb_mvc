@@ -21,10 +21,8 @@ class VisiteurType extends AbstractType
             ->add('adresse')
             ->add('ville')
             ->add('cp')
-            ->add('dateEmbauche')
             ->add('username')
             ->add('password')
-            ->add('salt')
         ;
     }
     

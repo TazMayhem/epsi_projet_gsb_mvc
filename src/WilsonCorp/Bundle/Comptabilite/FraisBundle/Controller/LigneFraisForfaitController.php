@@ -78,12 +78,24 @@ class LigneFraisForfaitController extends Controller
      */
     public function newAction()
     {
-        $entity = new LigneFraisForfait();
-        $form   = $this->createCreateForm($entity);
+        $entity1 = new LigneFraisForfait();
+        $entity2 = new LigneFraisForfait();
+        $entity3 = new LigneFraisForfait();
+        $entity4 = new LigneFraisForfait();
+
+        /*TODO:A modifier avec la valeur du mois courrant l'id de l'utilisateur connecté */
+        $moisCourrant = 05;
+        $visiteurConnecte = 6;
+        $quantite = 2;
+
+        //On récupère la liste des frais forfaitisés
+        $em = $this->getDoctrine()->getManager();
+        $fraisForfaitQuery=$em->createQuery("SELECT f FROM WilsonCorpComptabiliteFraisBundle:FraisForfait f");
+        $fraisForfait=$fraisForfaitQuery->getResult();
+
 
         return $this->render('WilsonCorpComptabiliteFraisBundle:LigneFraisForfait:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+            'fraisForfait' => $fraisForfait
         ));
     }
 

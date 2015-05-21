@@ -26,10 +26,14 @@ class FicheFraisController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $authorsQuery = $em->createQuery("SELECT v FROM WilsonCorpComptabiliteFraisBundle:Visiteur v");
+        $authors=$authorsQuery->getResult();
+
         $entities = $em->getRepository('WilsonCorpComptabiliteFraisBundle:FicheFrais')->findAll();
 
         return $this->render('WilsonCorpComptabiliteFraisBundle:FicheFrais:index.html.twig', array(
             'entities' => $entities,
+            'authors' => $authors
         ));
     }
     /**
@@ -130,8 +134,34 @@ class FicheFraisController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('WilsonCorpComptabiliteFraisBundle:FicheFrais')->find($id);
+
+        /*TODO:A modifier avec la valeur du mois courrant l'id de l'utilisateur connecté */
+        $moisCourrant = 05;
+        $visiteurConnecte = 6;
+        $quantite = 2;
+
+        //On récupère la liste des frais forfaitisés
+        $fraisForfaitQuery=$em->createQuery("SELECT f FROM WilsonCorpComptabiliteFraisBundle:FraisForfait f");
+        $fraisForfait=$fraisForfaitQuery->getResult();
+
+        //On récupère la fiche de frais du mois courrant correspondant à l'utilisateur connecté
+        $ficheFraisQuery=$em->createQuery("
+          SELECT f
+          FROM WilsonCorpComptabiliteFraisBundle:FicheFrais f
+          JOIN f.visiteur v WHERE v.id = $visiteurConnecte
+          AND f.mois = $moisCourrant
+        ");
+        $ficheFrais=$ficheFraisQuery->getResult();
+
+        //On récupère les lignes de frais forfaitisés du mois courant et de l'utilisateur connecté
+        $lignesFraisForfaitQuery=$em->createQuery("
+          SELECT l
+          FROM WilsonCorpComptabiliteFraisBundle:LigneFraisForfait l
+          JOIN l.visiteur v WHERE v.id = $visiteurConnecte
+          AND l.mois = $moisCourrant
+        ");
+        $lignesFraisForfait=$lignesFraisForfaitQuery->getResult();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find FicheFrais entity.');
@@ -141,6 +171,10 @@ class FicheFraisController extends Controller
 
         return $this->render('WilsonCorpComptabiliteFraisBundle:FicheFrais:show.html.twig', array(
             'entity'      => $entity,
+            'fraisForfait' => $fraisForfait,
+            'ficheFrais' => $ficheFrais,
+            'lignesFraisForfait' => $lignesFraisForfait,
+            'quantite' => $quantite,
             'delete_form' => $deleteForm->createView(),
         ));
     }
